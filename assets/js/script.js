@@ -30,6 +30,24 @@
 
 // Display current day
 const timeDisplay = $('#currentDay')
-let time = dayjs().format('dddd DD MMMM YYYY, HH:MM')
+let time = dayjs().format('dddd DD MMMM YYYY, HH:mm')
 timeDisplay.text(time).css('font-weight', 'bold');
 
+let hours = [9, 10, 11, 12, 13, 14, 15, 16]
+
+// loop to iterate over the hours in the array, and if the hour is less than the current time, it will add the class of present to the row with the corresponding ID (9-row, 10-row, 11-row, etc)
+
+for (let i = 0; i < hours.length; i++) {
+    let scheduleTime = dayjs().hour(hours[i]);
+    let row = $(`#${i + 9}-row`);
+
+    console.log(scheduleTime)
+
+    if (scheduleTime.isSame(time, 'hour')) {
+        row.addClass('present');
+    } else if (scheduleTime.isAfter(time, 'hour')) {
+        row.addClass('past');
+    } else {
+        row.addClass('future');
+    }
+}
