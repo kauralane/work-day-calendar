@@ -29,6 +29,9 @@
 // When you reload the page, load up anything that's in local storage. 
 
 // Display current day
+
+$(function () {
+
 const timeDisplay = $('#currentDay')
 let time = dayjs().format('dddd DD MMMM YYYY, HH:mm')
 timeDisplay.text(time).css('font-weight', 'bold');
@@ -44,9 +47,9 @@ for (let i = 0; i < hours.length; i++) {
     if (scheduleTime.isSame(time, 'hour')) {
         row.addClass('present');
     } else if (scheduleTime.isAfter(time, 'hour')) {
-        row.addClass('past');
-    } else {
         row.addClass('future');
+    } else {
+        row.addClass('past');
     }
 }
 
@@ -54,12 +57,31 @@ for (let i = 0; i < hours.length; i++) {
 // use the ID of the rows to select the button & content area for each row? 
 
 // Function to find the parent element (row) of the save button that was clicked. Then find the text input area of that same row. 
+const saveBtn = $('.saveBtn')
 
-$('.saveBtn').click(function () {
-    let row = $(this).closest('.row');
-    let textarea = row.find('.user-input');
-    let textareaVal = textarea.val();
-    console.log(textareaVal)
+saveBtn.click(function () {
 
-    // localStorage.setItem('input', JSON.stringify(textareaVal))
+    let hour = $(this).closest('.row').find('.hour').text();
+    let task = $(this).closest('.row').find('.user-input').val();
+
+    console.log(hour)
+    console.log(task)
+
+    localStorage.setItem('hour', hour)
+    localStorage.setItem('task', task)
 });
+
+function loadCalendar() {
+    $('.hour').each() {
+    let currentHour = $(this).text()
+    let currentTask = localStorage.getItem('task', task)
+
+    // console.log(currentHour)
+    // console.log(currentTask)
+    }
+
+}
+
+loadCalendar()
+
+})
