@@ -23,7 +23,7 @@
 // !If statement: if hour is later than now (dayjs), green. If hour is same as now, red. If earlier than now, grey. (Is there a way to do this that's if time is past, now, in future?)
 // !past, present, future CSS classes already exist!
 
-// Each hour row within column 'content' will need to be clickable, and the user needs to be able to enter text/delete text/change text. (check how to make block clickable)
+// !Each hour row within column 'content' will need to be clickable, and the user needs to be able to enter text/delete text/change text. (check how to make block clickable)
 
 // On click of 'save' button: save text content of columns (user input) to local storage. 
 // When you reload the page, load up anything that's in local storage. 
@@ -50,3 +50,16 @@ for (let i = 0; i < hours.length; i++) {
     }
 }
 
+// when save button is clicked, the corresponding row is printed to the console. 
+// use the ID of the rows to select the button & content area for each row? 
+
+// Function to find the parent element (row) of the save button that was clicked. Then find the text input area of that same row. 
+
+$('.saveBtn').click(function () {
+    let row = $(this).closest('.row');
+    let textarea = row.find('.user-input');
+    let textareaVal = textarea.val();
+    console.log(textareaVal)
+
+    // localStorage.setItem('input', JSON.stringify(textareaVal))
+});
