@@ -15,13 +15,13 @@
 
 // The following animation demonstrates the application functionality:
 
-// Use dayjs to display the current day and date at the top of the calendar
-// Use bootstrap to get 3 columns (time, content, save) and 9 rows (8 hours)
-// time column will need to use actual time (dayjs) - use 24 hour, even if displaying time in 12 hour.
+// !Use dayjs to display the current day and date at the top of the calendar
+// !Use bootstrap to get 3 columns (time, content, save) and 9 rows (8 hours)
+// !time column will need to use actual time (dayjs) - use 24 hour, even if displaying time in 12 hour.
 
 // Colour coding
-// If statement: if hour is later than now (dayjs), green. If hour is same as now, red. If earlier than now, grey. (Is there a way to do this that's if time is past, now, in future?)
-// past, present, future CSS classes already exist!
+// !If statement: if hour is later than now (dayjs), green. If hour is same as now, red. If earlier than now, grey. (Is there a way to do this that's if time is past, now, in future?)
+// !past, present, future CSS classes already exist!
 
 // Each hour row within column 'content' will need to be clickable, and the user needs to be able to enter text/delete text/change text. (check how to make block clickable)
 
@@ -41,8 +41,6 @@ for (let i = 0; i < hours.length; i++) {
     let scheduleTime = dayjs().hour(hours[i]);
     let row = $(`#${i + 9}-row`);
 
-    console.log(scheduleTime)
-
     if (scheduleTime.isSame(time, 'hour')) {
         row.addClass('present');
     } else if (scheduleTime.isAfter(time, 'hour')) {
@@ -51,3 +49,4 @@ for (let i = 0; i < hours.length; i++) {
         row.addClass('future');
     }
 }
+

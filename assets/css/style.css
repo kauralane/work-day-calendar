@@ -8,9 +8,11 @@ textarea {
   background: transparent;
   border: none;
   resize: none;
+  align-self: left;
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  width: 90%;
 }
 
 header {
@@ -71,3 +73,6 @@ header {
   transition: all 0.3s ease-in-out;
 }
 
+.save-area {
+  background-color: blue;
+}
