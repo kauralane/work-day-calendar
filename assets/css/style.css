@@ -73,6 +73,8 @@ header {
   transition: all 0.3s ease-in-out;
 }
 
-.save-area {
-  background-color: blue;
+/* To keep text black*/ 
+
+.user-input {
+  color: black;
 }
