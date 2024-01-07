@@ -9,7 +9,7 @@ The user can click on the main body of the corresponding hour and input text. Th
 The application also displays whether each hour (9am - 5pm) is in the past or future, or is the current hour. It does this via colour coding - grey is past, green is future, red is now.
 
 [Deployed application](https://kauralane.github.io/work-day-calendar/)
-![](./assets/images/screencapture-kauralane-github-io-work-day-calendar-2024-01-07-20_17_10.png)
+[](./assets/images/screencapture-kauralane-github-io-work-day-calendar-2024-01-07-20_17_10.png)
 
 ## Installation
 None - available for use via the deployed application link. 
