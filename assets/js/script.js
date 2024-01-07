@@ -36,10 +36,10 @@ const timeDisplay = $('#currentDay')
 let time = dayjs().format('dddd DD MMMM YYYY, HH:mm')
 timeDisplay.text(time).css('font-weight', 'bold');
 
-let hours = [9, 10, 11, 12, 13, 14, 15, 16]
-
 // loop to iterate over the hours in the array, and if the hour is less than the current time, it will add the class of present to the row with the corresponding ID (9-row, 10-row, 11-row, etc)
 
+function showColours() {
+let hours = [9, 10, 11, 12, 13, 14, 15, 16]
 for (let i = 0; i < hours.length; i++) {
     let scheduleTime = dayjs().hour(hours[i]);
     let row = $(`#${i + 9}-row`);
@@ -51,37 +51,32 @@ for (let i = 0; i < hours.length; i++) {
     } else {
         row.addClass('past');
     }
-}
+}}
 
-// when save button is clicked, the corresponding row is printed to the console. 
-// use the ID of the rows to select the button & content area for each row? 
-
-// Function to find the parent element (row) of the save button that was clicked. Then find the text input area of that same row. 
+// Function to find the parent element (row) of the save button that was clicked. Then find the text input area of that same row. Save both these items to local storage.
 const saveBtn = $('.saveBtn')
 
-saveBtn.click(function () {
+    saveBtn.click(function () {
+        let hour = $(this).closest('.row').find('.hour').text();
+        let task = $(this).closest('.row').find('.user-input').val();
 
-    let hour = $(this).closest('.row').find('.hour').text();
-    let task = $(this).closest('.row').find('.user-input').val();
+        localStorage.setItem(hour, task);
+    });
 
-    console.log(hour)
-    console.log(task)
 
-    localStorage.setItem('hour', hour)
-    localStorage.setItem('task', task)
-});
+// Load up items from local storage upon refreshing/loading the page. For each hour row, get the task value from local storage. Then, find the closest row to the current hour, and find the user-input area. Add the task value to the user input area.
 
-function loadCalendar() {
-    $('.hour').each() {
-    let currentHour = $(this).text()
-    let currentTask = localStorage.getItem('task', task)
+    function loadCalendar() {
+        $('.hour').each(function () {
+            let currentHour = $(this).text();
+            let currentTask = localStorage.getItem(currentHour);
 
-    // console.log(currentHour)
-    // console.log(currentTask)
+                $(this).closest('.row').find('.user-input').val(currentTask);
+
+        });
     }
 
-}
-
-loadCalendar()
+    showColours();
+    loadCalendar();
 
 })
