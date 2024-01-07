@@ -12,15 +12,15 @@ function showColours() {
 let hours = [9, 10, 11, 12, 13, 14, 15, 16]
 for (let i = 0; i < hours.length; i++) {
     let scheduleTime = dayjs().hour(hours[i]);
-    // let row = $(`#${i + 9}-row`);
-    let row = $('.row').children('.user-input')
+    let row = $(`#${i + 9}-row`)
+    let colourArea = row.find('.user-input')
 
     if (scheduleTime.isSame(time, 'hour')) {
-        row.addClass('present');
+        colourArea.addClass('present');
     } else if (scheduleTime.isAfter(time, 'hour')) {
-        row.addClass('future');
+        colourArea.addClass('future');
     } else {
-        row.addClass('past');
+        colourArea.addClass('past');
     }
 }}
 
